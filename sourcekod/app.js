@@ -1,5 +1,5 @@
-const detailsNav = [() => (window.location.hash = "details"), "details"]
-
+const detailsNav = [() => (window.location.hash = "details"), ""]
+const backToSearchNav = [() => (window.location.hash = "search"), ""]
 
 function defRoute() {
     if (
@@ -17,8 +17,11 @@ const App = ({ model }) =>
                 <Search model={model} nav={detailsNav} />
             </Show>
 
-            <div className="search debug"><Details model={model} /></div>
-
+            <Show class="details" hash="#details">
+                
+                    <Details model={model} back={backToSearchNav} />
+                    
+            </Show>
         </div>
 
 

@@ -1,13 +1,13 @@
-const DetailsView = ({ station }) => (
+const DetailsView = ({ station ,back:[navCallback, navLabel]}) => (
   <div class="transportDetails">
-        
+        <button onClick={() => navCallback()}>{navLabel} Back To Search</button>
     <div>
       <table>
       <thead>
         <tr>
           <th>Transport Mode</th>
           <th>Destination</th>
-          <th>Stop Area Name</th>
+          <th>Time and Date</th>
           <th>Display Time</th>
           <th>Line Number</th>
           <th>Group of Line</th>
@@ -18,7 +18,7 @@ const DetailsView = ({ station }) => (
         <tr>
           <td>{mtr.TransportMode}</td>
           <td>{mtr.Destination}</td>
-          <td>{mtr.StopAreaName}</td>
+          <td>{mtr.TimeTabledDateTime}</td>
           <td>{mtr.DisplayTime}</td>
           <td>{mtr.LineNumber}</td>
           <td>{mtr.GroupOfLine}</td>
@@ -29,7 +29,7 @@ const DetailsView = ({ station }) => (
         <tr>
           <td>{mtr.TransportMode}</td>
           <td>{mtr.Destination}</td>
-          <td>{mtr.StopAreaName}</td>
+          <td>{mtr.TimeTabledDateTime}</td>
           <td>{mtr.DisplayTime}</td>
           <td>{mtr.LineNumber}</td>
           <td>{mtr.GroupOfLine}</td>
@@ -41,7 +41,7 @@ const DetailsView = ({ station }) => (
         <tr>
           <td>{mtr.TransportMode}</td>
           <td>{mtr.Destination}</td>
-          <td>{mtr.StopAreaName}</td>
+          <td>{mtr.TimeTabledDateTime}</td>
           <td>{mtr.DisplayTime}</td>
           <td>{mtr.LineNumber}</td>
           <td>{mtr.GroupOfLine}</td>
@@ -53,7 +53,7 @@ const DetailsView = ({ station }) => (
         <tr>
           <td>{mtr.TransportMode}</td>
           <td>{mtr.Destination}</td>
-          <td>{mtr.StopAreaName}</td>
+          <td>{mtr.TimeTabledDateTime}</td>
           <td>{mtr.DisplayTime}</td>
           <td>{mtr.LineNumber}</td>
           <td>{mtr.GroupOfLine}</td>
@@ -65,7 +65,7 @@ const DetailsView = ({ station }) => (
         <tr>
           <td>{mtr.TransportMode}</td>
           <td>{mtr.Destination}</td>
-          <td>{mtr.StopAreaName}</td>
+          <td>{mtr.TimeTabledDateTime}</td>
           <td>{mtr.DisplayTime}</td>
           <td>{mtr.LineNumber}</td>
           <td>{mtr.GroupOfLine}</td>

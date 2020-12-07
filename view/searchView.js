@@ -1,13 +1,12 @@
-const SearchResultsView = ({ searchResults, getId, nav:[navCallback, navLabel]}) =>
+const SearchResultsView = ({ searchResults, getId,nav:[navCallback, navLabel]}) =>
   searchResults.map((station) => (
     <span key={station.siteId} className="searchResult">
-      <div>
-        <button  onClick={()=> {getId(station.SiteId)}}>choose!
-        <button onClick={()=> navCallback()}>{navLabel}</button>
+           <div>
         
-
+        <button onClick={()=> navCallback()} >{navLabel}
+        <span  onClick={()=> {getId(station.SiteId)}} >{station.Name}</span>
         </button >
-        <p >{station.Name}</p>
+        
       </div>
     </span>
   ));

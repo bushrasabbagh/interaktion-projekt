@@ -1,4 +1,4 @@
-function Details({model}) {
+function Details({model,back}) {
 
     const currentStation= useModelProp(model, "currentStation");
 
@@ -16,7 +16,9 @@ function Details({model}) {
 
     return promiseNoData(promise, data, error) ||
         h(DetailsView, {
-            station: data
+            station: data,
+            back:back
+            
             // dishAdded: dish => {model.addToMenu(dish);addNav()},
            
         }
