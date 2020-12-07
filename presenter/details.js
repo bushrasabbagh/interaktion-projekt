@@ -2,7 +2,6 @@ function Details({model}) {
 
     const currentStation= useModelProp(model, "currentStation");
 
-
     const [promise, setPromise] = React.useState();
     React.useEffect(
         () => setPromise(SearchModel.searchTrip({siteId: currentStation})), [currentStation]
