@@ -1,5 +1,5 @@
 function Details({model,back}) {
-
+    
     const currentStation= useModelProp(model, "currentStation");
 
     const [promise, setPromise] = React.useState();
@@ -14,10 +14,11 @@ function Details({model,back}) {
         // const menu= useModelProp(model, "dishes");
         // const isDishInMenu = menu.find(x => x.id== currentDish);
 
+
     return promiseNoData(promise, data, error) ||
         h(DetailsView, {
             station: data,
-            back:back
+            back:back,
             
             // dishAdded: dish => {model.addToMenu(dish);addNav()},
            

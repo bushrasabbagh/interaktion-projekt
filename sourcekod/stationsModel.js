@@ -1,9 +1,9 @@
 class StationModel {
-    constructor(guests = 2, dishes= [], currentDish= null) {
+    constructor(guests = 2, trips= [], currentDish= null) {
         this.currentStation;
       this.numberOfGuests = guests;
       this.subscribers = [];
-      this.dishes = dishes;
+      this.trips = trips;
       this.currentDish = currentDish;
     }
   
@@ -26,26 +26,27 @@ class StationModel {
       return this.numberOfGuests;
     }
   
-    addToMenu(dish) {
-      const isFound = this.dishes.find(
-        (existedDish) => {
-          if(existedDish.id == dish.id)
-          throw Error("dish already exists");
+    addToList(trip) {
+      const isFound = this.trips.find(
+        (existedTrip) => {
+          if(existedTrip.Name == trip.Name)
+          throw Error("place already exists");
       });
       
-      this.dishes = [dish, ...this.dishes];
+      this.trips = [trip, ...this.trips];
       this.notifyObservers();
     }
   
-    getMenu() {
-      return [...this.dishes];
+    getList() {
+      return [...this.trips];
     }
   
-    removeFromMenu(dish){
-      this.dishes = this.dishes.filter(existedDish => existedDish.id !== dish.id)
+    removeFromList(trip){
+      this.trips = this.trips.filter(existedTrip => existedTrip.Name !== trip.Name)
       this.notifyObservers();
   
     }
+    
   
     setCurrentDish(id){
       this.currentDish = id;
