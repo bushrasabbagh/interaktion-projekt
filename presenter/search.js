@@ -1,7 +1,7 @@
 function Search({ model,nav}) {
   const [searchstring, setSearchstring] = React.useState("");
   const [promise, setPromise] = React.useState(null);
-  React.useEffect(() => setPromise(SearchModel.searchId({})),
+  React.useEffect(() => setPromise(""),
     []);
 
   const [data, error] = usePromise(promise);

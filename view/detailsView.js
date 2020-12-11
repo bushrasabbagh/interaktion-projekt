@@ -25,18 +25,23 @@
 
 //   */}
 
-const DetailsView = ({ station, back: [navCallback, navLabel], onType }) => {
+const DetailsView = ({ station, back: [navCallback, navLabel]}) => {
   const transportTypes = ["Buses", "Trains", "Metros", "Ships", "Trams"];
+  const transportTypesFilter = ["bus", "train", "metro", "ship", "tram"];
+  var filtered = [];
   var all = [];
   Object.keys(station).forEach(function (key) {
     if (transportTypes.includes(key)) { all.push(station[key]) };//to put all transportTypes in one array
   });
   all = all.flat();
 
-  var filtered = [...all];
   const [type, setType] = React.useState("");
-  if (type != "all") {
-    filtered = all.filter(t => t.TransportMode !== type);
+  if(type==""){
+    filtered = [...all];
+  }
+  else {
+    filtered = [];
+    filtered = all.filter(t => t.TransportMode.toLowerCase() === type);
   }
 
 
@@ -44,9 +49,9 @@ const DetailsView = ({ station, back: [navCallback, navLabel], onType }) => {
     <div>
     <button onClick={() => navCallback()}>{navLabel} Back To Search</button>
     <span>
-      <select id={"selected"} onChange={(event) => onType(event.target.value)}>
+      <select id={"selected"} onChange={(event) => setType(event.target.value)}>
 
-        {all.map(k => <option key={k} value={k}>{k}</option>)}
+        {transportTypesFilter.map(k => <option key={k} value={k}>{k}</option>)}
 
       </select>
       </span>
@@ -64,15 +69,15 @@ const DetailsView = ({ station, back: [navCallback, navLabel], onType }) => {
           </tr>
         </thead>
         <tbody>
-          {filtered.map(mtr => (
+          {filtered.map(avg => (
 
-            <tr key={mtr.StopAreaName}>
-              <td>{mtr.TransportMode}</td>
-              <td>{mtr.Destination}</td>
-              <td>{mtr.TimeTabledDateTime}</td>
-              <td>{mtr.DisplayTime}</td>
-              <td>{mtr.LineNumber}</td>
-              <td>{mtr.GroupOfLine}</td>
+            <tr key={avg.StopAreaName}>
+              <td>{avg.TransportMode}</td>
+              <td>{avg.Destination}</td>
+              <td>{avg.TimeTabledDateTime}</td>
+              <td>{avg.DisplayTime}</td>
+              <td>{avg.LineNumber}</td>
+              <td>{avg.GroupOfLine}</td>
             </tr>
 
           ))
