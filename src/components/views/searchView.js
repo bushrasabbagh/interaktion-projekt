@@ -61,7 +61,12 @@ const SearchView = ({
             <Card>
                 <Card.Body>
                     <div>
-                        <input type={"text"} placeholder="Station" maxlength="20" onChange={(e) => setSearchstring(e.target.value)} />
+                        <input type={"text"} placeholder="Station" maxLength="20" onChange={(e) => setSearchstring(e.target.value)} 
+                        onKeyPress={event => {
+                            if (event.key === 'Enter') {
+                                station(event.target.value)
+                            }
+                          }}/>
                         <button onClick={() => station(searchstring)}> SEARCH </button>
                     </div>
                 </Card.Body>
