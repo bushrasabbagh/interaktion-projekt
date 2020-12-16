@@ -48,11 +48,6 @@ const SearchView = ({
         }
     }
 
-    const deleteFav = (toDel) => {
-        const delFavRef = firebase.database().ref(currentUser.uid).child(toDel);
-        delFavRef.remove();
-    };
-
     return (
         <div>
             <Card>
@@ -63,47 +58,10 @@ const SearchView = ({
           </Link>
                     </div>
                 </Card.Body></Card>
-            {favListF ? favListF.length > 0 ? <Card>
-                <Card.Body>
-                    <table className="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>
-                                    My favorites stations!
-                                </th>
-                                <th>Delete?</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {favListF.map((fav, index) =>
-
-                                <tr key={index}>
-                                    <td>
-                                        <Link to={`/detail/${fav.Favorite}`}>{fav.Station}</Link>
-                                    </td>
-                                    <td>
-                                        <button onClick={() => deleteFav(fav.id)}>Delete</button>
-                                    </td>
-                                </tr>
-                            )}
-
-                        </tbody>
-                    </table>
-
-                </Card.Body>
-            </Card>
-                : <p className="text-center mb-4">No favorite stations added</p>
-                : <div className="d-flex justify-content-center">
-                    <div className="spinner-border" role="status">
-                    </div>
-                </div>
-            }
-
-
             <Card>
                 <Card.Body>
                     <div>
-                        <input type={"text"} placeholder="Station" onChange={(e) => setSearchstring(e.target.value)} />
+                        <input type={"text"} placeholder="Station" maxlength="20" onChange={(e) => setSearchstring(e.target.value)} />
                         <button onClick={() => station(searchstring)}> SEARCH </button>
                     </div>
                 </Card.Body>

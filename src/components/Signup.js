@@ -2,9 +2,12 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import { Container } from "react-bootstrap"
+
 
 export default function Signup() {
   const emailRef = useRef()
+  const nameRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
   const { signup } = useAuth()
@@ -22,7 +25,7 @@ export default function Signup() {
     try {
       setError("")
       setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
+      await signup(emailRef.current.value, passwordRef.current.value,nameRef.current.value)
       history.push("/")
     } catch {
       setError("Failed to create an account")
@@ -33,12 +36,22 @@ export default function Signup() {
 
   return (
     <>
+    <Container
+      className="d-flex align-items-center justify-content-center"
+      style={{ minHeight: "100vh" }}
+    >
+      <div className="w-100" style={{ maxWidth: "800px" }}>
+      
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <p>* Required</p>
           <Form onSubmit={handleSubmit}>
+          <Form.Group id="usName">
+              <Form.Label>User Name*</Form.Label>
+              <Form.Control type="text" ref={nameRef} required />
+            </Form.Group>
             <Form.Group id="email">
               <Form.Label>E-mail*</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
@@ -59,7 +72,7 @@ export default function Signup() {
       </Card>
       <div className="w-100 text-center mt-2">
         Already a member? <Link to="/login">Log In</Link>
-      </div>
+      </div></div></Container>
     </>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DetailView from "../views/detailView";
+import FavoListView from "../views/favoListView";
 
 function Detail ({match}){
     const [avg, setAvg] = useState('');
@@ -16,11 +17,16 @@ function Detail ({match}){
     },[match.params.id])
 
     return (
-        <div>
-            <DetailView
-                avg = {avg}
-            />
+        <> <div className='wrapper'
+        >
+                <FavoListView />
+            <div className="main_content">
+                <DetailView
+                    avg={avg}
+                />
+            </div>
         </div>
+        </>
     );
 }
 export default Detail;

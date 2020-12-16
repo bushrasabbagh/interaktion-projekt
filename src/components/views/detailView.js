@@ -20,7 +20,7 @@ const DetailView = ({
         filtered = [...all];
     }
     else {
-        filtered = [];
+        // filtered = [];
         filtered = all.filter(t => t.TransportMode.toLowerCase() === type);
         if (filtered.length===0){filtered.push('NODATA')}
     }
@@ -49,7 +49,7 @@ const DetailView = ({
             <Card>
                 <Card.Body>
                     <div>
-                        {filtered.length > 1 ? <table className="table table-dark table-striped">
+                        {filtered.length > 1 ? <table className="table table-striped">
                             <thead>
                                 <tr>
                                     <th>From station</th>
